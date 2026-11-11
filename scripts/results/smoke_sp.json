@@ -1,0 +1,92 @@
+{
+    "product_index": {
+        "n": 3,
+        "mean_ms": 133.939,
+        "median_ms": 132.947,
+        "stddev_ms": 1.575,
+        "min_ms": 132.708,
+        "max_ms": 136.162,
+        "p95_ms": 132.947
+    },
+    "employee_index": {
+        "n": 3,
+        "mean_ms": 153.275,
+        "median_ms": 161.156,
+        "stddev_ms": 13.735,
+        "min_ms": 133.959,
+        "max_ms": 164.709,
+        "p95_ms": 161.156
+    },
+    "product_create": {
+        "n": 3,
+        "mean_ms": 147.995,
+        "median_ms": 154.169,
+        "stddev_ms": 12.723,
+        "min_ms": 130.272,
+        "max_ms": 159.546,
+        "p95_ms": 154.169
+    },
+    "employee_create": {
+        "n": 3,
+        "mean_ms": 135.766,
+        "median_ms": 134.853,
+        "stddev_ms": 1.529,
+        "min_ms": 134.526,
+        "max_ms": 137.92,
+        "p95_ms": 134.853
+    },
+    "product_edit": {
+        "n": 3,
+        "mean_ms": 126.057,
+        "median_ms": 126.405,
+        "stddev_ms": 1.772,
+        "min_ms": 123.734,
+        "max_ms": 128.033,
+        "p95_ms": 126.405
+    },
+    "employee_edit": {
+        "n": 3,
+        "mean_ms": 126.244,
+        "median_ms": 126.994,
+        "stddev_ms": 1.456,
+        "min_ms": 124.209,
+        "max_ms": 127.529,
+        "p95_ms": 126.994
+    },
+    "product_update": {
+        "n": 3,
+        "mean_ms": 140.114,
+        "median_ms": 140.22,
+        "stddev_ms": 1.946,
+        "min_ms": 137.679,
+        "max_ms": 142.443,
+        "p95_ms": 140.22
+    },
+    "employee_update": {
+        "n": 3,
+        "mean_ms": 206.479,
+        "median_ms": 155.832,
+        "stddev_ms": 75.213,
+        "min_ms": 150.8,
+        "max_ms": 312.806,
+        "p95_ms": 155.832
+    },
+    "product_destroy": {
+        "n": 3,
+        "mean_ms": 129.386,
+        "median_ms": 128.175,
+        "stddev_ms": 5.267,
+        "min_ms": 123.626,
+        "max_ms": 136.356,
+        "p95_ms": 128.175
+    },
+    "employee_destroy": {
+        "n": 3,
+        "mean_ms": 134.109,
+        "median_ms": 134.006,
+        "stddev_ms": 10.947,
+        "min_ms": 120.752,
+        "max_ms": 147.567,
+        "p95_ms": 134.006
+    }
+}

@@ -1,0 +1,82 @@
+=====================================================================
+EVIDENCE: BENCHMARK CRUD VOLUME 25.000 (App ORM & App SP)
+Tanggal: 2026-09-07
+=====================================================================
+
+--- STEP 1: Reseed App ORM ke volume 25.000 ---
+
+$ cd laravel-orm && php artisan reseed:volume 25000
+
+Reseed selesai: 25000 products, 25000 employees.
+
+
+--- STEP 2: Export dump data-only, import ke App SP ---
+
+$ mysqldump -u root --no-create-info db_orm_bench products employees > ../seed-data-25000.sql
+dump exit=0
+
+$ mysql -u root -e "SET FOREIGN_KEY_CHECKS=0; TRUNCATE products; TRUNCATE employees; SET FOREIGN_KEY_CHECKS=1;" db_sp_bench
+$ mysql -u root db_sp_bench < ../seed-data-25000.sql
+import exit=0
+
+$ mysql -u root -N -e "SELECT COUNT(*) FROM db_sp_bench.products; SELECT COUNT(*) FROM db_sp_bench.employees;"
+25000
+25000
+
+
+--- STEP 3: Benchmark App ORM (volume=25000, reps=30) ---
+
+$ php artisan benchmark:crud --volume=25000 --reps=30
+
+Benchmark product (volume=25000) selesai.
+Benchmark employee (volume=25000) selesai.
+
+
+--- STEP 4: Benchmark App SP (volume=25000, reps=30) ---
+
+$ cd ../laravel-sp && php artisan benchmark:crud --volume=25000 --reps=30
+
+Benchmark product (volume=25000) selesai.
+Benchmark employee (volume=25000) selesai.
+
+
+--- STEP 5: Restore database ke kondisi seed 1000 baris original ---
+
+$ mysql -u root -e "SET FOREIGN_KEY_CHECKS=0; TRUNCATE products; TRUNCATE employees; SET FOREIGN_KEY_CHECKS=1;" db_orm_bench
+$ mysql -u root db_orm_bench < laravel-orm/seed-data.sql
+orm restore exit=0
+
+$ mysql -u root -e "SET FOREIGN_KEY_CHECKS=0; TRUNCATE products; TRUNCATE employees; SET FOREIGN_KEY_CHECKS=1;" db_sp_bench
+$ mysql -u root db_sp_bench < laravel-sp/seed-data.sql
+sp restore exit=0
+
+$ mysql -u root -e "ALTER TABLE db_orm_bench.products AUTO_INCREMENT = 1001; ALTER TABLE db_orm_bench.employees AUTO_INCREMENT = 1001; ALTER TABLE db_sp_bench.products AUTO_INCREMENT = 1001; ALTER TABLE db_sp_bench.employees AUTO_INCREMENT = 1001;"
+
+
+--- STEP 6: Verifikasi restore ---
+
+$ mysql -u root -N -e "SELECT COUNT(*) FROM db_orm_bench.products; SELECT COUNT(*) FROM db_orm_bench.employees; SELECT COUNT(*) FROM db_sp_bench.products; SELECT COUNT(*) FROM db_sp_bench.employees;"
+1000
+1000
+1000
+1000
+
+$ mysql -u root -e "CHECKSUM TABLE products; CHECKSUM TABLE employees;" db_orm_bench
+Table	Checksum
+db_orm_bench.products	2658939626
+Table	Checksum
+db_orm_bench.employees	1400780273
+
+$ mysql -u root -e "CHECKSUM TABLE products; CHECKSUM TABLE employees;" db_sp_bench
+Table	Checksum
+db_sp_bench.products	2658939626
+Table	Checksum
+db_sp_bench.employees	1400780273
+
+=====================================================================
+KESIMPULAN: Benchmark volume 25.000 berhasil dijalankan penuh untuk
+Product & Employee di kedua app (masing-masing 30 repetisi x 4 operasi
+CRUD, CSV baru menimpa result/*-25000.csv). Database berhasil
+dikembalikan ke kondisi 1000 baris semula, checksum identik dengan
+kondisi stabil sebelumnya (2658939626 / 1400780273) di kedua sisi.
+=====================================================================

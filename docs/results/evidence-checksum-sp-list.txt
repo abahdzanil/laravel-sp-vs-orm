@@ -1,0 +1,47 @@
+=====================================================================
+EVIDENCE: CHECKSUM TABLE & SHOW PROCEDURE STATUS
+Tanggal: 2026-09-07
+=====================================================================
+
+$ mysql -u root -e "CHECKSUM TABLE products; CHECKSUM TABLE employees;" db_orm_bench
+
+Table	Checksum
+db_orm_bench.products	2658939626
+Table	Checksum
+db_orm_bench.employees	1400780273
+
+
+$ mysql -u root -e "CHECKSUM TABLE products; CHECKSUM TABLE employees;" db_sp_bench
+
+Table	Checksum
+db_sp_bench.products	2658939626
+Table	Checksum
+db_sp_bench.employees	1400780273
+
+
+$ mysql -u root -e "SHOW PROCEDURE STATUS WHERE Db = 'db_sp_bench';" db_sp_bench
+
+Db	Name	Type	Definer	Modified	Created	Security_type	Comment	character_set_client	collation_connection	Database Collation
+db_sp_bench	sp_employee_count	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_employee_create	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_employee_delete	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_employee_email_exists	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_employee_find	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_employee_list	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_employee_update	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_count	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_create	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_delete	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_find	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_list	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_sku_exists	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_product_update	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_user_create	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+db_sp_bench	sp_user_find_by_email	PROCEDURE	root@localhost	2026-09-06 21:49:10	2026-09-06 21:49:10	DEFINER		utf8mb4	utf8mb4_unicode_ci	utf8mb4_unicode_ci
+
+=====================================================================
+KESIMPULAN: Checksum products & employees identik di kedua database
+(2658939626 / 1400780273). 16 stored procedure lengkap terpasang di
+db_sp_bench (14 CRUD asli + 2 tambahan validasi unique: sp_product_sku_exists,
+sp_employee_email_exists).
+=====================================================================

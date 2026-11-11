@@ -1,0 +1,26 @@
+| Entity | Operation | Volume | Test | p-value | Signifikan? | Effect Size | Lebih Cepat |
+|---|---|---|---|---|---|---|---|
+| employee | create | 5.000 | Wilcoxon signed-rank | 5.60e-09 | Ya | rank-biserial r=0.991 | SP |
+| employee | create | 15.000 | Wilcoxon signed-rank | 2.37e-05 | Ya | rank-biserial r=0.884 | SP |
+| employee | create | 25.000 | Wilcoxon signed-rank | 2.55e-07 | Ya | rank-biserial r=0.935 | SP |
+| employee | delete | 5.000 | Wilcoxon signed-rank | 1.73e-06 | Ya | rank-biserial r=1.000 | SP |
+| employee | delete | 15.000 | Wilcoxon signed-rank | 0.3085 | Tidak | rank-biserial r=0.217 | SP |
+| employee | delete | 25.000 | Wilcoxon signed-rank | 0.1579 | Tidak | rank-biserial r=-0.299 | SP |
+| employee | read | 5.000 | Wilcoxon signed-rank | 1.73e-06 | Ya | rank-biserial r=1.000 | SP |
+| employee | read | 15.000 | Wilcoxon signed-rank | 1.73e-06 | Ya | rank-biserial r=1.000 | SP |
+| employee | read | 25.000 | Wilcoxon signed-rank | 1.90e-09 | Ya | rank-biserial r=1.000 | SP |
+| employee | update | 5.000 | Wilcoxon signed-rank | 1.90e-09 | Ya | rank-biserial r=1.000 | SP |
+| employee | update | 15.000 | Wilcoxon signed-rank | 0.0208 | Ya | rank-biserial r=0.480 | SP |
+| employee | update | 25.000 | Wilcoxon signed-rank | 0.7303 | Tidak | rank-biserial r=0.075 | SP |
+| product | create | 5.000 | Wilcoxon signed-rank | 1.90e-09 | Ya | rank-biserial r=1.000 | SP |
+| product | create | 15.000 | Wilcoxon signed-rank | 0.0293 | Ya | rank-biserial r=-0.454 | ORM |
+| product | create | 25.000 | Wilcoxon signed-rank | 1.90e-09 | Ya | rank-biserial r=1.000 | SP |
+| product | delete | 5.000 | Wilcoxon signed-rank | 0.0054 | Ya | rank-biserial r=0.570 | SP |
+| product | delete | 15.000 | Wilcoxon signed-rank | 0.7922 | Tidak | rank-biserial r=-0.058 | ORM |
+| product | delete | 25.000 | Wilcoxon signed-rank | 2.35e-06 | Ya | rank-biserial r=0.884 | SP |
+| product | read | 5.000 | Wilcoxon signed-rank | 1.73e-06 | Ya | rank-biserial r=1.000 | SP |
+| product | read | 15.000 | Wilcoxon signed-rank | 1.90e-09 | Ya | rank-biserial r=1.000 | SP |
+| product | read | 25.000 | Wilcoxon signed-rank | 1.90e-09 | Ya | rank-biserial r=1.000 | SP |
+| product | update | 5.000 | Wilcoxon signed-rank | 0.1981 | Tidak | rank-biserial r=0.273 | SP |
+| product | update | 15.000 | Wilcoxon signed-rank | 0.0577 | Tidak | rank-biserial r=0.398 | SP |
+| product | update | 25.000 | Wilcoxon signed-rank | 9.22e-06 | Ya | rank-biserial r=0.845 | SP |

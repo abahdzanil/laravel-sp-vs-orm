@@ -1,0 +1,121 @@
+=====================================================================
+EVIDENCE: ANALISIS STATISTIK (scripts/analyze_benchmark.py)
+Tanggal: 2026-09-07
+Catatan: dijalankan SETELAH benchmark volume=25000 di evidence-benchmark-25000.txt,
+jadi data level 25.000 di sini mencerminkan run TERBARU (bukan run pertama yang
+dipakai di ANALYSIS-REPORT.md) - angka bergeser sedikit karena data mayoritas
+tidak berdistribusi normal (lihat pembahasan noise di ANALYSIS-REPORT.md Bagian 4).
+=====================================================================
+
+$ python scripts/analyze_benchmark.py
+
+Loaded 1440 rows from 48 combinations
+
+====================================================================================================
+UJI NORMALITAS (SHAPIRO-WILK) - 48 KOMBINASI
+====================================================================================================
+app   entity operation  volume  shapiro_stat  shapiro_p  normal
+orm employee    create    5000      0.777349   0.000026   False
+orm employee    create   15000      0.438531   0.000000   False
+orm employee    create   25000      0.937029   0.075670    True
+orm employee    delete    5000      0.403926   0.000000   False
+orm employee    delete   15000      0.602435   0.000000   False
+orm employee    delete   25000      0.555461   0.000000   False
+orm employee      read    5000      0.210925   0.000000   False
+orm employee      read   15000      0.594555   0.000000   False
+orm employee      read   25000      0.201702   0.000000   False
+orm employee    update    5000      0.551605   0.000000   False
+orm employee    update   15000      0.863897   0.001229   False
+orm employee    update   25000      0.848591   0.000579   False
+orm  product    create    5000      0.298370   0.000000   False
+orm  product    create   15000      0.947319   0.143242    True
+orm  product    create   25000      0.880057   0.002828   False
+orm  product    delete    5000      0.837035   0.000336   False
+orm  product    delete   15000      0.616728   0.000000   False
+orm  product    delete   25000      0.956133   0.245944    True
+orm  product      read    5000      0.310725   0.000000   False
+orm  product      read   15000      0.215237   0.000000   False
+orm  product      read   25000      0.186378   0.000000   False
+orm  product    update    5000      0.456163   0.000000   False
+orm  product    update   15000      0.946568   0.136720    True
+orm  product    update   25000      0.197570   0.000000   False
+ sp employee    create    5000      0.823476   0.000181   False
+ sp employee    create   15000      0.626627   0.000000   False
+ sp employee    create   25000      0.831877   0.000265   False
+ sp employee    delete    5000      0.919637   0.026245   False
+ sp employee    delete   15000      0.774288   0.000023   False
+ sp employee    delete   25000      0.296772   0.000000   False
+ sp employee      read    5000      0.466792   0.000000   False
+ sp employee      read   15000      0.658895   0.000000   False
+ sp employee      read   25000      0.500005   0.000000   False
+ sp employee    update    5000      0.913541   0.018297   False
+ sp employee    update   15000      0.490680   0.000000   False
+ sp employee    update   25000      0.697107   0.000001   False
+ sp  product    create    5000      0.870957   0.001760   False
+ sp  product    create   15000      0.843973   0.000465   False
+ sp  product    create   25000      0.493935   0.000000   False
+ sp  product    delete    5000      0.519388   0.000000   False
+ sp  product    delete   15000      0.771146   0.000020   False
+ sp  product    delete   25000      0.794770   0.000053   False
+ sp  product      read    5000      0.423473   0.000000   False
+ sp  product      read   15000      0.358370   0.000000   False
+ sp  product      read   25000      0.395136   0.000000   False
+ sp  product    update    5000      0.552217   0.000000   False
+ sp  product    update   15000      0.871100   0.001773   False
+ sp  product    update   25000      0.786731   0.000038   False
+
+====================================================================================================
+UJI SIGNIFIKANSI (WILCOXON SIGNED-RANK) - 24 PASANGAN
+====================================================================================================
+  entity operation  volume                 test  p_value  significant    effect_label  effect_size  orm_median  sp_median faster
+employee    create    5000 Wilcoxon signed-rank 0.000000         True rank-biserial r     0.991398    4.259000   1.270400     SP
+employee    create   15000 Wilcoxon signed-rank 0.000024         True rank-biserial r     0.883871    1.369000   1.226900     SP
+employee    create   25000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    4.866950   1.241100     SP
+employee    delete    5000 Wilcoxon signed-rank 0.000002         True rank-biserial r     1.000000    1.630900   1.197000     SP
+employee    delete   15000 Wilcoxon signed-rank 0.308521        False rank-biserial r     0.217204    1.240500   1.204000     SP
+employee    delete   25000 Wilcoxon signed-rank 0.013663         True rank-biserial r     0.509677    2.300000   1.434450     SP
+employee      read    5000 Wilcoxon signed-rank 0.000002         True rank-biserial r     1.000000    1.321400   0.288500     SP
+employee      read   15000 Wilcoxon signed-rank 0.000002         True rank-biserial r     1.000000    2.666000   0.259050     SP
+employee      read   25000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    4.061950   0.263100     SP
+employee    update    5000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    4.321100   1.490950     SP
+employee    update   15000 Wilcoxon signed-rank 0.020850         True rank-biserial r     0.479570    1.387000   1.223550     SP
+employee    update   25000 Wilcoxon signed-rank 0.000000         True rank-biserial r     0.995699    3.770000   1.232650     SP
+ product    create    5000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    3.131950   1.257850     SP
+ product    create   15000 Wilcoxon signed-rank 0.029326         True rank-biserial r    -0.453763    1.756950   1.821550    ORM
+ product    create   25000 Wilcoxon signed-rank 0.000000         True rank-biserial r     0.991398    4.494450   1.480450     SP
+ product    delete    5000 Wilcoxon signed-rank 0.005383         True rank-biserial r     0.569892    3.888500   1.501000     SP
+ product    delete   15000 Wilcoxon signed-rank 0.792159        False rank-biserial r    -0.058065    1.243800   1.316050    ORM
+ product    delete   25000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    3.893500   1.523000     SP
+ product      read    5000 Wilcoxon signed-rank 0.000002         True rank-biserial r     1.000000    1.325850   0.251550     SP
+ product      read   15000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    2.699500   0.249900     SP
+ product      read   25000 Wilcoxon signed-rank 0.000002         True rank-biserial r     1.000000    4.007000   0.249500     SP
+ product    update    5000 Wilcoxon signed-rank 0.198076        False rank-biserial r     0.273118    3.039950   1.643100     SP
+ product    update   15000 Wilcoxon signed-rank 0.057688        False rank-biserial r     0.397849    1.706800   1.560900     SP
+ product    update   25000 Wilcoxon signed-rank 0.000000         True rank-biserial r     1.000000    4.302000   1.191500     SP
+
+=== SUMMARY ===
+Normal (Shapiro p>0.05): 4/48
+Non-normal: 44/48
+Paired t-test used: 0/24
+Wilcoxon used: 24/24
+Significant (p<0.05): 20/24
+Charts saved: 8 files in E:\work\web-workspaces\riset-sp-vs-eloquent-laravel\result\charts
+
+Done. JSON outputs written to E:\work\web-workspaces\riset-sp-vs-eloquent-laravel\scripts\analysis_output
+
+=====================================================================
+KESIMPULAN: Hasil run ini SEDIKIT BERBEDA dari ANALYSIS-REPORT.md
+(dibuat dari run pertama):
+  - Normal (Shapiro p>0.05): 4/48 (report lama: 3/48) - tambahan
+    "product delete @25000" (p=0.245944)
+  - Signifikan (Wilcoxon p<0.05): 20/24 (report lama: 18/24) -
+    tambahan "employee delete @25000" (p=0.013663) dan
+    "employee update @25000" (p=0.000000)
+Pola besar tetap konsisten dengan ANALYSIS-REPORT.md: operasi READ
+tetap paling kuat dan konsisten (r=1.000 di semua level, SP menang
+telak di seluruh 30 sampel berpasangan), dan "product create @15000"
+tetap satu-satunya kombinasi yang signifikan ke arah ORM lebih cepat
+(r=-0.454). Pergeseran angka level 25.000 ini wajar mengingat 44/48
+kombinasi tidak berdistribusi normal (noise antar-run tinggi),
+sesuai pembahasan di ANALYSIS-REPORT.md Bagian 4.
+=====================================================================

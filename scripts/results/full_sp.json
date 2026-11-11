@@ -1,0 +1,92 @@
+{
+    "product_index": {
+        "n": 100,
+        "mean_ms": 137.297,
+        "median_ms": 132.651,
+        "stddev_ms": 10.232,
+        "min_ms": 128.122,
+        "max_ms": 198.274,
+        "p95_ms": 153.02
+    },
+    "employee_index": {
+        "n": 100,
+        "mean_ms": 135.62,
+        "median_ms": 131.049,
+        "stddev_ms": 8.705,
+        "min_ms": 127.637,
+        "max_ms": 160.429,
+        "p95_ms": 152.976
+    },
+    "product_create": {
+        "n": 100,
+        "mean_ms": 137.686,
+        "median_ms": 133.738,
+        "stddev_ms": 8.128,
+        "min_ms": 128.474,
+        "max_ms": 156.758,
+        "p95_ms": 151.822
+    },
+    "employee_create": {
+        "n": 100,
+        "mean_ms": 139.639,
+        "median_ms": 134.341,
+        "stddev_ms": 8.667,
+        "min_ms": 130.483,
+        "max_ms": 158.621,
+        "p95_ms": 152.479
+    },
+    "product_edit": {
+        "n": 100,
+        "mean_ms": 129.22,
+        "median_ms": 125.346,
+        "stddev_ms": 7.531,
+        "min_ms": 121.728,
+        "max_ms": 148.016,
+        "p95_ms": 143.452
+    },
+    "employee_edit": {
+        "n": 100,
+        "mean_ms": 129.454,
+        "median_ms": 124.794,
+        "stddev_ms": 8.537,
+        "min_ms": 121.732,
+        "max_ms": 150.514,
+        "p95_ms": 146.242
+    },
+    "product_update": {
+        "n": 100,
+        "mean_ms": 135.015,
+        "median_ms": 130.5,
+        "stddev_ms": 8.918,
+        "min_ms": 127.718,
+        "max_ms": 164.727,
+        "p95_ms": 152.027
+    },
+    "employee_update": {
+        "n": 100,
+        "mean_ms": 138.632,
+        "median_ms": 133.984,
+        "stddev_ms": 8.154,
+        "min_ms": 130.203,
+        "max_ms": 157.176,
+        "p95_ms": 153.219
+    },
+    "product_destroy": {
+        "n": 100,
+        "mean_ms": 126.438,
+        "median_ms": 122.295,
+        "stddev_ms": 8.233,
+        "min_ms": 119.963,
+        "max_ms": 148.936,
+        "p95_ms": 144.553
+    },
+    "employee_destroy": {
+        "n": 100,
+        "mean_ms": 126.715,
+        "median_ms": 122.868,
+        "stddev_ms": 7.628,
+        "min_ms": 119.475,
+        "max_ms": 150.171,
+        "p95_ms": 141.524
+    }
+}

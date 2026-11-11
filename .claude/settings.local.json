@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/c/xampp/mysql/bin/mysql.exe -uroot -e \"CHECKSUM TABLE products; CHECKSUM TABLE employees;\" db_orm_bench)",
+      "Bash(/c/xampp/mysql/bin/mysql.exe -uroot -e \"CHECKSUM TABLE products; CHECKSUM TABLE employees;\" db_sp_bench)",
+      "Bash(/c/xampp/mysql/bin/mysql.exe -uroot -e \"SHOW PROCEDURE STATUS WHERE Db = 'db_sp_bench';\" db_sp_bench)",
+      "Bash(php artisan *)"
+    ]
+  }
+}

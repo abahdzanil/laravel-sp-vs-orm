@@ -1,0 +1,20 @@
+{
+  "total_rows": 1440,
+  "total_combinations": 48,
+  "normal_count": 4,
+  "non_normal_count": 44,
+  "significant_pairs": 20,
+  "non_significant_pairs": 4,
+  "chart_files": [
+    "product-create.png",
+    "product-read.png",
+    "product-update.png",
+    "product-delete.png",
+    "employee-create.png",
+    "employee-read.png",
+    "employee-update.png",
+    "employee-delete.png"
+  ],
+  "ttest_used": 0,
+  "wilcoxon_used": 24
+}

@@ -1,0 +1,92 @@
+{
+    "product_index": {
+        "n": 100,
+        "mean_ms": 141.851,
+        "median_ms": 138.766,
+        "stddev_ms": 8.456,
+        "min_ms": 133.625,
+        "max_ms": 169.184,
+        "p95_ms": 162.233
+    },
+    "employee_index": {
+        "n": 100,
+        "mean_ms": 140.949,
+        "median_ms": 136.763,
+        "stddev_ms": 8.487,
+        "min_ms": 133.92,
+        "max_ms": 161.961,
+        "p95_ms": 159.318
+    },
+    "product_create": {
+        "n": 100,
+        "mean_ms": 147.839,
+        "median_ms": 141.788,
+        "stddev_ms": 15.369,
+        "min_ms": 138.476,
+        "max_ms": 266.069,
+        "p95_ms": 164.234
+    },
+    "employee_create": {
+        "n": 100,
+        "mean_ms": 148.789,
+        "median_ms": 145.589,
+        "stddev_ms": 8.338,
+        "min_ms": 140.657,
+        "max_ms": 180.447,
+        "p95_ms": 167.237
+    },
+    "product_edit": {
+        "n": 100,
+        "mean_ms": 138.438,
+        "median_ms": 135.301,
+        "stddev_ms": 7.28,
+        "min_ms": 130.039,
+        "max_ms": 157.955,
+        "p95_ms": 151.606
+    },
+    "employee_edit": {
+        "n": 100,
+        "mean_ms": 143.515,
+        "median_ms": 142.92,
+        "stddev_ms": 10.691,
+        "min_ms": 130.568,
+        "max_ms": 195.678,
+        "p95_ms": 160.199
+    },
+    "product_update": {
+        "n": 100,
+        "mean_ms": 147.713,
+        "median_ms": 143.264,
+        "stddev_ms": 15.908,
+        "min_ms": 139.066,
+        "max_ms": 284.736,
+        "p95_ms": 165.015
+    },
+    "employee_update": {
+        "n": 100,
+        "mean_ms": 152.618,
+        "median_ms": 145.172,
+        "stddev_ms": 16.659,
+        "min_ms": 141.23,
+        "max_ms": 281.182,
+        "p95_ms": 169.149
+    },
+    "product_destroy": {
+        "n": 100,
+        "mean_ms": 137.746,
+        "median_ms": 133.149,
+        "stddev_ms": 8.513,
+        "min_ms": 128.928,
+        "max_ms": 159.426,
+        "p95_ms": 152.341
+    },
+    "employee_destroy": {
+        "n": 100,
+        "mean_ms": 139.788,
+        "median_ms": 135.115,
+        "stddev_ms": 9.12,
+        "min_ms": 129.668,
+        "max_ms": 163.993,
+        "p95_ms": 154.238
+    }
+}

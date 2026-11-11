@@ -1,0 +1,126 @@
+=====================================================================
+EVIDENCE: PHPUNIT TEST SUITE (App ORM & App SP)
+Tanggal: 2026-09-07
+=====================================================================
+
+$ cd laravel-orm && php artisan test
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                                                                          0.31s
+
+   PASS  Tests\Feature\AuthControllerTest
+  ✓ register creates user and redirects to dashboard                                           4.77s
+  ✓ register rejects invalid email format                                                       0.14s
+  ✓ register rejects duplicate email                                                            0.64s
+  ✓ login success redirects to dashboard                                                        0.12s
+  ✓ login fails with wrong password                                                              0.25s
+  ✓ logout clears session                                                                        0.02s
+
+   PASS  Tests\Feature\EmployeeControllerTest
+  ✓ guest is redirected to login                                                                0.06s
+  ✓ index displays employees                                                                     0.61s
+  ✓ store creates employee                                                                       0.02s
+  ✓ store fails validation when fields missing                                                   0.03s
+  ✓ store rejects duplicate email                                                                0.01s
+  ✓ update modifies employee                                                                     0.01s
+  ✓ update rejects email used by another employee                                                0.01s
+  ✓ update allows keeping same email                                                              0.01s
+  ✓ destroy deletes employee                                                                      0.09s
+
+   FAIL  Tests\Feature\ExampleTest
+  ⨯ the application returns a successful response                                               0.76s
+
+   PASS  Tests\Feature\ProductControllerTest
+  ✓ guest is redirected to login                                                                0.04s
+  ✓ index displays products                                                                      0.07s
+  ✓ store creates product                                                                        0.01s
+  ✓ store fails validation when fields missing                                                   0.01s
+  ✓ store rejects duplicate sku                                                                  0.01s
+  ✓ update modifies product                                                                      0.02s
+  ✓ update rejects sku used by another product                                                   0.02s
+  ✓ update allows keeping same sku                                                                0.01s
+  ✓ destroy deletes product                                                                       0.01s
+  ────────────────────────────────────────────────────────────────────────────────────────────────
+  FAILED  Tests\Feature\ExampleTest > the application returns a successful response
+  Expected response status code [200] but received 404.
+  Failed asserting that 404 is identical to 200.
+
+  at tests\Feature\ExampleTest.php:17
+    13▕     public function test_the_application_returns_a_successful_response(): void
+    14▕     {
+    15▕         $response = $this->get('/');
+    16▕
+    17▕         $response->assertStatus(200);
+    18▕     }
+    19▕ }
+    20▕
+
+  Tests:    1 failed, 25 passed (80 assertions)
+  Duration: 11.03s
+
+
+$ cd ../laravel-sp && php artisan test
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                                                                            0.08s
+
+   PASS  Tests\Feature\AuthControllerTest
+  ✓ register creates user and redirects to dashboard                                             1.82s
+  ✓ register rejects invalid email format                                                        0.04s
+  ✓ register rejects duplicate email                                                             0.02s
+  ✓ login success redirects to dashboard                                                         0.02s
+  ✓ login fails with wrong password                                                               0.03s
+  ✓ logout clears session                                                                         0.01s
+
+   PASS  Tests\Feature\EmployeeControllerTest
+  ✓ guest is redirected to login                                                                 0.02s
+  ✓ index displays employees                                                                      0.07s
+  ✓ store creates employee                                                                        0.02s
+  ✓ store fails validation when fields missing                                                    0.03s
+  ✓ store rejects duplicate email                                                                 0.03s
+  ✓ update modifies employee                                                                      0.03s
+  ✓ update rejects email used by another employee                                                 0.02s
+  ✓ update allows keeping same email                                                               0.02s
+  ✓ destroy deletes employee                                                                       0.03s
+
+   FAIL  Tests\Feature\ExampleTest
+  ⨯ the application returns a successful response                                                0.23s
+
+   PASS  Tests\Feature\ProductControllerTest
+  ✓ guest is redirected to login                                                                 0.04s
+  ✓ index displays products                                                                       0.03s
+  ✓ store creates product                                                                         0.03s
+  ✓ store fails validation when fields missing                                                    0.01s
+  ✓ store rejects duplicate sku                                                                   0.02s
+  ✓ update modifies product                                                                        0.04s
+  ✓ update rejects sku used by another product                                                    0.04s
+  ✓ update allows keeping same sku                                                                 0.02s
+  ✓ destroy deletes product                                                                        0.04s
+  ────────────────────────────────────────────────────────────────────────────────────────────────
+  FAILED  Tests\Feature\ExampleTest > the application returns a successful response
+  Expected response status code [200] but received 404.
+  Failed asserting that 404 is identical to 200.
+
+  at tests\Feature\ExampleTest.php:17
+    13▕     public function test_the_application_returns_a_successful_response(): void
+    14▕     {
+    15▕         $response = $this->get('/');
+    16▕
+    17▕         $response->assertStatus(200);
+    18▕     }
+    19▕ }
+    20▕
+
+  Tests:    1 failed, 25 passed (80 assertions)
+  Duration: 4.21s
+
+=====================================================================
+KESIMPULAN: App ORM dan App SP sama-sama 25 passed, 1 failed. Test
+yang gagal (Tests\Feature\ExampleTest) adalah boilerplate default
+Laravel yang menguji route GET / — route ini memang tidak pernah
+didefinisikan di routes/web.php kedua app (keduanya langsung mulai
+dari /register), jadi kegagalan ini pre-existing dan identik di
+kedua sisi, BUKAN regresi dari implementasi Product/Employee/Auth.
+24 test yang ditulis khusus untuk parity check (ProductControllerTest,
+EmployeeControllerTest, AuthControllerTest) semuanya PASS di kedua app.
+=====================================================================
